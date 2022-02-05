@@ -1,10 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" fixed app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -20,13 +16,12 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <v-list-item>
+          <widget />
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
+    <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
     </v-app-bar>
@@ -35,9 +30,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer
-      app
-    >
+    <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -45,28 +38,28 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       drawer: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Главная',
-          to: '/'
+          icon: "mdi-apps",
+          title: "Главная",
+          to: "/",
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'О нас',
-          to: '/abou'
+          icon: "mdi-chart-bubble",
+          title: "О нас",
+          to: "/abou",
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Животные',
-          to: '/animals'
-        }
+          icon: "mdi-chart-bubble",
+          title: "Животные",
+          to: "/animals",
+        },
       ],
-      title: 'Ферма'
-    }
-  }
-}
+      title: "Ферма",
+    };
+  },
+};
 </script>

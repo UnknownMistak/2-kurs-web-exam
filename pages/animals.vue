@@ -1,6 +1,9 @@
 <template>
   <v-row>
     <v-col cols="12">
+      <v-btn @click="formVis = !formVis">Добавить живтное</v-btn>
+    </v-col>
+    <v-col cols="12" v-if="formVis">
       <form @submit.prevent="submit">
         <v-col cols="12" v-for="(field, key) in form" :key="key">
           <v-text-field
@@ -29,14 +32,23 @@
 <script>
 export default {
   data: () => ({
+    formVis: false,
     form: {},
     formAns: {},
     animals: [],
   }),
   methods: {
-    submit() {
-      this.$axios.post("https://demo-api.vsdev.space/api/farm/baby", {});
-      
+    async submit() {
+      this.formVis = false;
+      await this.$axios.post(
+        "https://demo-api.vsdev.space/api/farm/baby",
+        this.formAns
+      );
+      this.formAns = {};
+      const anim = await this.$axios.get(
+        `https://demo-api.vsdev.space/api/farm/baby`
+      );
+      this.animals = anim.data;
     },
   },
   async mounted() {
