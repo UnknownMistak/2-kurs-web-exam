@@ -58,6 +58,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'О нас',
           to: '/abou'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Животные',
+          to: '/animals'
         }
       ],
       title: 'Ферма'
